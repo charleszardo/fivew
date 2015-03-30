@@ -8,9 +8,16 @@ class GamesController < ApplicationController
   
   def create
     @game = Game.new(params[:game])
- 
-    @game.save
-    redirect_to new_who_path(:game => @game.id)
+    
+    respond_to do |format|
+      if @game.save
+        format.html { redirect_to new_who_path(:game_id => @game.id) }
+        format.json { render action: 'show', status: :created, location: @game }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @game.errors, status: :unprocessable_entity }
+      end
+    end
   end
   
   def index
