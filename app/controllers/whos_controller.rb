@@ -10,8 +10,9 @@ class WhosController < ApplicationController
   
   def create
     @who = Who.new(who_params)
+    @game = @who.game
     @who.save
-    redirect_to @who
+    redirect_to @game
   end
   
   def get_game

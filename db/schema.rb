@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150329161354) do
+ActiveRecord::Schema.define(version: 20150405060645) do
 
   create_table "games", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 20150329161354) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "game_id"
+  end
+
+  create_table "withs", force: :cascade do |t|
+    t.text     "text"
+    t.string   "email"
+    t.integer  "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

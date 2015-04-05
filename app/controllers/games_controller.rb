@@ -7,7 +7,7 @@ class GamesController < ApplicationController
   end
   
   def create
-    @game = Game.new(params[:game])
+    @game = Game.new(game_params)
     
     respond_to do |format|
       if @game.save
