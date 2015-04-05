@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
+    done?
   end
   
   def new
@@ -21,6 +22,16 @@ class GamesController < ApplicationController
   end
   
   def index
+  end
+  
+  def done?
+    @game = Game.find(params[:id])
+    return @game.doing.present? && @game.see.present? && @game.when.present? &&
+           @game.where.present? && @game.who.present? && @game.with.present?
+  end
+  
+  def next
+    
   end
   
   private
