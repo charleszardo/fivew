@@ -31,7 +31,7 @@ class GamesController < ApplicationController
   end
   
   def next
-    
+    @game = Game.find(params[:id])
   end
   
   private
